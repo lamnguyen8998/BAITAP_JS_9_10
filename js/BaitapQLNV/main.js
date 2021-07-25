@@ -81,7 +81,6 @@ function khoiTao(){
   hienthi(dsnv);
 }
 
-
 function themNhanVien() {
     var txttknv = document.getElementById("tknv").value;
     var txtname = document.getElementById("name").value;
@@ -91,6 +90,7 @@ function themNhanVien() {
     var txtluongCB = +document.getElementById("luongCB").value;
     var txtchucvu = document.getElementById("chucvu").value;
     var txtgioLam = document.getElementById("gioLam").value;
+
 
     var nhanVien = new NhanVien(
       txttknv, 
@@ -102,6 +102,12 @@ function themNhanVien() {
       txtchucvu, 
       txtgioLam
       );
+
+     var isValid =  xacThucDuLieu(nhanVien)
+
+     if (!isValid){
+       return
+     }
 
     console.log(nhanVien);
 
@@ -157,6 +163,12 @@ function capNhatNhanVien() {
       txtchucvu, 
       txtgioLam
       );
+
+      var isValid =  xacThucDuLieu(nhanVien)
+
+     if (!isValid){
+       return
+     }
 
     dsnv = dsnv.map(function (nv) {
         if (nv.txttknv === txttknv) {
@@ -244,4 +256,32 @@ function chonNhanVien(txttknv){
   document.getElementById("tknv").disabled = true;
 
   updateForm(nhanVien)
+}
+
+
+function xacThucDuLieu(nhanVien) {
+
+  var validator = new Validator() ;
+    var isValid = validator.isRequired("tbTKNV", nhanVien.txttknv);
+    isValid &= validator.isRequired("tbTen", nhanVien.txtname);
+    isValid &= validator.isRequired("tbEmail", nhanVien.txtemail) && validator.txtemail("tbEmail", nhanVien.txtemail);
+    isValid &= validator.isRequired("tbMatKhau", nhanVien.txtpassword);
+    isValid &= validator.isRequired("tbNgay", nhanVien.txtdatepicker);
+    isValid &= validator.isRequired("tbLuongCB", nhanVien.txtluongCB);
+    isValid &= validator.isRequired("tbChucVu", nhanVien.txtchucvu);
+    isValid &= validator.isRequired("tbGiolam", nhanVien.txtgioLam);
+
+    if (!isValid){
+      for (var key in validator.errors){
+        if (validator.errors[key]){
+          document.getElementById(key).innerHTML = validator.errors[key];
+        }
+      }
+
+      return false
+    }
+
+    return true
+
+
 }
