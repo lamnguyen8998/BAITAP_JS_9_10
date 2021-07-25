@@ -85,8 +85,31 @@ function themNhanVien() {
     dsnv.push(nhanVien);
     console.log(dsnv);
 
-    hienthi();
+    hienthi(dsnv);
     resetForm();
+}
+
+function xoaNhanVien(txttknv){
+  dsnv = dsnv.filter(function(nv) {
+    return nv.txttknv !== txttknv;
+  
+    });
+  
+    hienthi(dsnv);
+}
+
+function timKiemNhanVien(){
+  var search = document.getElementById("searchName").value
+
+  var newDsnv = dsnv.filter(function(nv){
+
+    return nv.txtname.toLowerCase().indexOf(search.toLowerCase()) !== -1
+    
+  })
+
+  hienthi(newDsnv)
+
+
 }
 
 function capNhatNhanVien() {
@@ -116,11 +139,11 @@ function capNhatNhanVien() {
         }
         return nv;
       });
-      hienthi();
+      hienthi(dsnv);
       resetForm()
 }
 
-function hienthi() {
+function hienthi(dsnv) {
     var tbody = document.getElementById("tableDanhSach");
     var html = "";
 
@@ -154,7 +177,7 @@ function hienthi() {
 
 function resetForm(){
 updateForm ({});
-document.getElementById("txttknv").disabled = false
+document.getElementById("tknv").disabled = false
 
 }
 
@@ -167,8 +190,6 @@ function updateForm(nhanVien) {
   document.getElementById("luongCB").value = nhanVien.txtluongCB || "";
   document.getElementById("chucvu").value = nhanVien.txtchucvu || "";
   document.getElementById("gioLam").value = nhanVien.txtgioLam || "";
-
-  
 }
 
 function delegationTable(event){
@@ -188,17 +209,6 @@ function delegationTable(event){
   
 }
 
-function xoaNhanVien(txttknv){
-  dsnv = dsnv.filter(function(nv) {
-    return nv.txttknv !== txttknv;
-  
-    });
-  
-    hienthi();
-}
-
-
-
 function chonNhanVien(txttknv){
 
   var nhanVien = dsnv.find(function(nv){
@@ -209,20 +219,4 @@ function chonNhanVien(txttknv){
   document.getElementById("tknv").disabled = true;
 
   updateForm(nhanVien)
-  
-
-}
-
-
-function timKiemNhanVien(){
-  var search = document.getElementById("searchName").value
-
-  var newDsnv = dsnv.filter(function(nv){
-    return nv.txttknv.toLowerCase().indexOf(search.toLowerCase()) !== 1
-    
-  })
-
-  hienthi(newDsnv)
-
-
 }
