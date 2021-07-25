@@ -57,7 +57,30 @@ document.getElementById("btnTimNV").addEventListener("click", timKiemNhanVien)
 document.getElementById("btnCapNhat").addEventListener("click", capNhatNhanVien)
 document.getElementById("tableDanhSach").addEventListener("click",delegationTable)
 
-var dsnv = [];
+var dsnv = JSON.parse(localStorage.getItem("dsnv")) || [];
+khoiTao();
+
+
+function khoiTao(){
+  if(dsnv.length === 0){
+    return
+  }
+  dsnv = dsnv.map(function(nv){
+    return new NhanVien(
+      nv.txttknv,
+      nv.txtname,
+      nv.txtemail,
+      nv.txtpassword,
+      nv.txtdatepicker,
+      nv.txtluongCB,
+      nv.txtchucvu,
+      nv.txtgioLam
+      );
+  });
+
+  hienthi(dsnv);
+}
+
 
 function themNhanVien() {
     var txttknv = document.getElementById("tknv").value;
@@ -83,7 +106,7 @@ function themNhanVien() {
     console.log(nhanVien);
 
     dsnv.push(nhanVien);
-    console.log(dsnv);
+    localStorage.setItem("dsnv", JSON.stringify(dsnv));
 
     hienthi(dsnv);
     resetForm();
@@ -102,9 +125,11 @@ function timKiemNhanVien(){
   var search = document.getElementById("searchName").value
 
   var newDsnv = dsnv.filter(function(nv){
+    var searchValue = search.trim().toLowerCase()
+    var nameValue = nv.txtname.trim().toLowerCase()
 
-    return nv.txtname.toLowerCase().indexOf(search.toLowerCase()) !== -1
-    
+    return nameValue.indexOf(searchValue) !== -1
+  
   })
 
   hienthi(newDsnv)
