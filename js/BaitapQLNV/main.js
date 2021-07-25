@@ -53,6 +53,7 @@ NhanVien.prototype.xepLoai = function () {
 
 document.getElementById("btnReset").addEventListener("click",resetForm)
 document.getElementById("btnThemNV").addEventListener("click", themNhanVien)
+document.getElementById("btnTimNV").addEventListener("click", timKiemNhanVien)
 document.getElementById("btnCapNhat").addEventListener("click", capNhatNhanVien)
 document.getElementById("tableDanhSach").addEventListener("click",delegationTable)
 
@@ -115,8 +116,7 @@ function capNhatNhanVien() {
         }
         return nv;
       });
-    
-      hienThi();
+      hienthi();
       resetForm()
 }
 
@@ -153,7 +153,8 @@ function hienthi() {
 }
 
 function resetForm(){
-updateForm ({})
+updateForm ({});
+document.getElementById("txttknv").disabled = false
 
 }
 
@@ -209,5 +210,19 @@ function chonNhanVien(txttknv){
 
   updateForm(nhanVien)
   
+
+}
+
+
+function timKiemNhanVien(){
+  var search = document.getElementById("searchName").value
+
+  var newDsnv = dsnv.filter(function(nv){
+    return nv.txttknv.toLowerCase().indexOf(search.toLowerCase()) !== 1
+    
+  })
+
+  hienthi(newDsnv)
+
 
 }
