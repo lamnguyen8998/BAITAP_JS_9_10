@@ -264,14 +264,14 @@ function chonNhanVien(txttknv){
 function xacThucDuLieu(nhanVien) {
 
   var validator = new Validator() ;
-    var isValid = validator.isRequired("tbTKNV", nhanVien.txttknv);
-    isValid &= validator.isRequired("tbTen", nhanVien.txtname);
-    isValid &= validator.isRequired("tbEmail", nhanVien.txtemail) && validator.txtemail("tbEmail", nhanVien.txtemail);
-    isValid &= validator.isRequired("tbMatKhau", nhanVien.txtpassword)
+    var isValid = validator.isRequired("tbTKNV", nhanVien.txttknv) && validator.gioiHanKyTu("tbTKNV", nhanVien.txttknv);
+    isValid &= validator.isRequired("tbTen", nhanVien.txtname) && validator.tenNhanVienChu("tbTen", nhanVien.txtname);
+    isValid &= validator.isRequired("tbEmail", nhanVien.txtemail) && validator.quyDinhEmail("tbEmail", nhanVien.txtemail);
+    isValid &= validator.isRequired("tbMatKhau", nhanVien.txtpassword) 
     isValid &= validator.isRequired("tbNgay", nhanVien.txtdatepicker);
-    isValid &= validator.isRequired("tbLuongCB", nhanVien.txtluongCB);
+    isValid &= validator.isRequired("tbLuongCB", nhanVien.txtluongCB)&& validator.gioiHanLuong("tbLuongCB", nhanVien.txtluongCB);
     isValid &= validator.isRequired("tbChucVu", nhanVien.txtchucvu);
-    isValid &= validator.isRequired("tbGiolam", nhanVien.txtgioLam);
+    isValid &= validator.isRequired("tbGiolam", nhanVien.txtgioLam) && validator.gioiHanGioLam("tbGiolam", nhanVien.txtgioLam);
 
     if (!isValid){
       for (var key in validator.errors){
@@ -283,9 +283,5 @@ function xacThucDuLieu(nhanVien) {
       return false
     }
     return true
-
-
-
-
 
 }

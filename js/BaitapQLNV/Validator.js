@@ -12,7 +12,7 @@ Validator.prototype.isRequired = function(name, value) {
   return true;
 };
 
-Validator.prototype.txtemail = function(name, value) {
+Validator.prototype.quyDinhEmail = function(name, value) {
     if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(value)) {
         this.errors[name] = "Email không đúng định dạng";
         return false;
@@ -20,13 +20,62 @@ Validator.prototype.txtemail = function(name, value) {
       return true;
     };
 
-    Validator.prototype.txtpassword = function(name, value) {
-      if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$/.test(value)) {
-          this.errors[name] = "Mật mã ";
+    Validator.prototype.gioiHanLuong = function(name, value) {
+      console.log(value);
+      if( value < 1000000 || value > 20000000) {
+        this.errors[name] = "Lương ko hợp lệ";
+        return false;
+
+      }
+      return true;
+        
+    };
+
+    Validator.prototype.gioiHanGioLam = function(name, value) {
+      console.log(value);
+      if( value < 80 || value > 200) {
+        this.errors[name] = "Giờ làm không hợp lệ";
+        return false;
+
+      }
+      return true;
+        
+    };
+
+    Validator.prototype.gioiHanKyTu = function(name, value) {
+      if (!/([a-zA-Z]|\d){4,6}$/.test(value)) {
+        this.errors[name] = "TKNV không đúng, VD: A123";
+        return false;
+      }
+      return true;
+      };
+
+      Validator.prototype.tenNhanVienChu = function(name, value) {
+        if (!/[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/.test(value)) {
+          this.errors[name] = "Tên nhân viên phải là chữ";
           return false;
         }
         return true;
-      };
+        };
+
+
+
+// Chịu đã làm đủ cách
+    // Validator.prototype.txtpassword = function(name, value) {
+    //   if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$/.test(value)) {
+    //     this.errors[name] = "Password phải có ký tự đặt biệt , chữ in hoa và không quá 10 ký tự VD: 1234567@Aa";
+    //     return false;
+    //   }
+    //   return true;
+    //   };
+
+    // Validator.prototype.txtpassword = function(name, value) {
+    //   if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$/.test(value)) {
+    //       this.errors[name] = "Mật mã phải từ 6 đến 10 ký tự và phải có ký tự đặc biệt ";
+    //       return false;
+    //     }
+    //     return true;
+    //   };
 
     
 
