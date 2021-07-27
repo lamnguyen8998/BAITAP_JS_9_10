@@ -132,9 +132,10 @@ function timKiemNhanVien(){
 
   var newDsnv = dsnv.filter(function(nv){
     var searchValue = search.trim().toLowerCase()
-    var nameValue = nv.txtname.trim().toLowerCase()
+    var xepLoaiValue = nv.xepLoai().trim().toLowerCase()
 
-    return nameValue.indexOf(searchValue) !== -1
+
+    return xepLoaiValue.indexOf(searchValue) !== -1
   
   })
 
@@ -142,6 +143,7 @@ function timKiemNhanVien(){
 
 
 }
+// return nameValue.indexOf(searchValue) !== -1
 
 function capNhatNhanVien() {
     var txttknv = document.getElementById("tknv").value;
@@ -280,8 +282,10 @@ function xacThucDuLieu(nhanVien) {
 
       return false
     }
-
     return true
+
+
+
 
 
 }

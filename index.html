@@ -198,7 +198,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fa fa-user"></i></span>
 								</div>
-								<input type="text" name="tk" id="tknv" class="form-control input-sm"
+								<input type="number"  name="tk" id="tknv" class="form-control input-sm"
 									placeholder="Tài khoản">
 							</div>
 
@@ -256,8 +256,8 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fa fa-money" aria-hidden="true"></i></span>
 								</div>
-								<input type="text" name="luongCB" id="luongCB" class="form-control input-sm"
-									placeholder="Lương cơ bản">
+								<input type="number" min= "1000000" max = "20000000" name="luongCB" id="luongCB" class="form-control input-sm"
+									placeholder="Lương cơ bản" >
 							</div>
 							<span id="tbLuongCB" class="text-danger"></span>
 						</div>
@@ -281,7 +281,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true" ></i></span>
 								</div>
-								<input type="text" name="gioLam" id="gioLam" class="form-control input-sm"
+								<input type="number" min= "80" max = "200" name="gioLam" id="gioLam" class="form-control input-sm"
 									placeholder="Giờ làm">
 							</div>
 							<span id="tbGiolam" class="text-danger"></span>
