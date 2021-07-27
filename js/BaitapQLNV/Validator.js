@@ -20,6 +20,14 @@ Validator.prototype.txtemail = function(name, value) {
       return true;
     };
 
+    Validator.prototype.txtpassword = function(name, value) {
+      if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$/.test(value)) {
+          this.errors[name] = "Mật mã ";
+          return false;
+        }
+        return true;
+      };
+
     
 
     

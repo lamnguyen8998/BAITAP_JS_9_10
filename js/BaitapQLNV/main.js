@@ -267,7 +267,7 @@ function xacThucDuLieu(nhanVien) {
     var isValid = validator.isRequired("tbTKNV", nhanVien.txttknv);
     isValid &= validator.isRequired("tbTen", nhanVien.txtname);
     isValid &= validator.isRequired("tbEmail", nhanVien.txtemail) && validator.txtemail("tbEmail", nhanVien.txtemail);
-    isValid &= validator.isRequired("tbMatKhau", nhanVien.txtpassword);
+    isValid &= validator.isRequired("tbMatKhau", nhanVien.txtpassword)
     isValid &= validator.isRequired("tbNgay", nhanVien.txtdatepicker);
     isValid &= validator.isRequired("tbLuongCB", nhanVien.txtluongCB);
     isValid &= validator.isRequired("tbChucVu", nhanVien.txtchucvu);
