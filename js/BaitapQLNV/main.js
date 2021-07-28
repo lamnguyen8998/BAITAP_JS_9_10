@@ -1,55 +1,4 @@
-function NhanVien(
-  txttknv, 
-  txtname, 
-  txtemail, 
-  txtpassword, 
-  txtdatepicker, 
-  txtluongCB, 
-  txtchucvu, 
-  txtgioLam 
-  ) {
-    this.txttknv = txttknv;
-    this.txtname = txtname;
-    this.txtemail = txtemail;
-    this.txtpassword = txtpassword;
-    this.txtdatepicker = txtdatepicker;
-    this.txtluongCB = txtluongCB;
-    this.txtchucvu = txtchucvu;
-    this.txtgioLam = txtgioLam;
-}
 
-NhanVien.prototype.tinhTongLuong = function() {
-    if (this.txtchucvu === "Sếp"){
-       return(this.txtluongCB * 3)
-    }
-    if (this.txtchucvu === "Trưởng phòng"){
-        return(this.txtluongCB * 2)
-    }
-    if (this.txtchucvu === "Nhân viên"){
-        return(this.txtluongCB * 1)
-    }
-
-}
-
-NhanVien.prototype.xepLoai = function () {
-
-    if (this.txtgioLam >= 192) {
-      return " nhân viên xuất sắc";
-    }
-
-    if (this.txtgioLam >= 176) {
-      return "nhân viên giỏi";
-    }
-
-    if (this.txtgioLam >= 160) {
-      return "nhân viên khá";
-    }
-
-    if (this.txtgioLam < 160) {
-      return "nhân viên trung bình";
-    }
-
-  };
 
 document.getElementById("btnReset").addEventListener("click",resetForm)
 document.getElementById("btnThemNV").addEventListener("click", themNhanVien)
@@ -80,6 +29,22 @@ function khoiTao(){
 
   hienthi(dsnv);
 }
+
+// DEMO USERS
+let demo1 = new NhanVien("a123", "Hồng Loan Thị Lưu", "loan@gmail.com", "123456", "01-01-2011", 1000000, "Sếp", 199);
+let demo2 = new NhanVien("a234", "Vũ Lâm Nguyễn", "nguyen@gmail.com", "123456", "01-01-2011", 130000, "Sếp", 179);
+let demo3 = new NhanVien("a345", "Nguyễn Lưu Phương Anh", "anh@gmail.com", "123456", "01-01-2011", 2000000, "Sếp", 199);
+let demo4 = new NhanVien("a456", "Nguyễn Vũ Minh Phát", "phat@gmail.com", "123456", "01-01-2011", 1900000, "Sếp", 169);
+let demo5 = new NhanVien("a789", "Phát Lâm Lưu", "luu@gmail.com", "123456", "01-01-2011", 2000000, "Sếp", 189);
+
+dsnv.push(demo1);
+dsnv.push(demo2);
+dsnv.push(demo3);
+dsnv.push(demo4);
+dsnv.push(demo5);
+
+hienthi(dsnv);
+
 
 function themNhanVien() {
     var txttknv = document.getElementById("tknv").value;
