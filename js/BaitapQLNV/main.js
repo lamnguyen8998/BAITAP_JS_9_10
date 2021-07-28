@@ -149,7 +149,7 @@ function capNhatNhanVien() {
     var txttknv = document.getElementById("tknv").value;
     var txtname = document.getElementById("name").value;
     var txtemail = document.getElementById("email").value;
-    var txtpassword = +document.getElementById("password").value;
+    var txtpassword = document.getElementById("password").value;
     var txtdatepicker = document.getElementById("datepicker").value;
     var txtluongCB = +document.getElementById("luongCB").value;
     var txtchucvu = document.getElementById("chucvu").value;
@@ -267,7 +267,7 @@ function xacThucDuLieu(nhanVien) {
     var isValid = validator.isRequired("tbTKNV", nhanVien.txttknv) && validator.gioiHanKyTu("tbTKNV", nhanVien.txttknv);
     isValid &= validator.isRequired("tbTen", nhanVien.txtname) && validator.tenNhanVienChu("tbTen", nhanVien.txtname);
     isValid &= validator.isRequired("tbEmail", nhanVien.txtemail) && validator.quyDinhEmail("tbEmail", nhanVien.txtemail);
-    isValid &= validator.isRequired("tbMatKhau", nhanVien.txtpassword) 
+    isValid &= validator.isRequired("tbMatKhau", nhanVien.txtpassword);   //&& validator.gioiHanPassWord("tbMatKhau", nhanVien.txtpassword);
     isValid &= validator.isRequired("tbNgay", nhanVien.txtdatepicker);
     isValid &= validator.isRequired("tbLuongCB", nhanVien.txtluongCB)&& validator.gioiHanLuong("tbLuongCB", nhanVien.txtluongCB);
     isValid &= validator.isRequired("tbChucVu", nhanVien.txtchucvu);
