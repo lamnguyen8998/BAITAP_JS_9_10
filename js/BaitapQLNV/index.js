@@ -6,44 +6,27 @@ document.getElementById("btnTimNV").addEventListener("click", timKiemNhanVien)
 document.getElementById("btnCapNhat").addEventListener("click", capNhatNhanVien)
 document.getElementById("tableDanhSach").addEventListener("click",delegationTable)
 
-var dsnv = JSON.parse(localStorage.getItem("dsnv")) || [];
-khoiTao();
+var qlnv =new QuanLyNhanVien();
+qlnv.khoiTao();
+hienthi(qlnv.dsnv);
 
 
-function khoiTao(){
-  if(dsnv.length === 0){
-    return
-  }
-  dsnv = dsnv.map(function(nv){
-    return new NhanVien(
-      nv.txttknv,
-      nv.txtname,
-      nv.txtemail,
-      nv.txtpassword,
-      nv.txtdatepicker,
-      nv.txtluongCB,
-      nv.txtchucvu,
-      nv.txtgioLam
-      );
-  });
 
-  hienthi(dsnv);
-}
 
-// DEMO USERS
-let demo1 = new NhanVien("a123", "Hồng Loan Thị Lưu", "loan@gmail.com", "123456", "01-01-2011", 1000000, "Sếp", 199);
-let demo2 = new NhanVien("a234", "Vũ Lâm Nguyễn", "nguyen@gmail.com", "123456", "01-01-2011", 130000, "Sếp", 179);
-let demo3 = new NhanVien("a345", "Nguyễn Lưu Phương Anh", "anh@gmail.com", "123456", "01-01-2011", 2000000, "Sếp", 199);
-let demo4 = new NhanVien("a456", "Nguyễn Vũ Minh Phát", "phat@gmail.com", "123456", "01-01-2011", 1900000, "Sếp", 169);
-let demo5 = new NhanVien("a789", "Phát Lâm Lưu", "luu@gmail.com", "123456", "01-01-2011", 2000000, "Sếp", 189);
+// DEMO TEST
+let demo1 = new NhanVien("a123", "Hồng Loan Thị Lưu", "loan@gmail.com", "123456", "25/07/2021", 1000000, "Sếp", 199);
+let demo2 = new NhanVien("a234", "Vũ Lâm Nguyễn", "nguyen@gmail.com", "123456", "26/07/2021", 130000, "Sếp", 179);
+let demo3 = new NhanVien("a345", "Nguyễn Lưu Phương Anh", "anh@gmail.com", "123456", "27/07/2021", 2000000, "Sếp", 199);
+let demo4 = new NhanVien("a456", "Nguyễn Vũ Minh Phát", "phat@gmail.com", "123456", "28/07/2021", 1900000, "Sếp", 169);
+let demo5 = new NhanVien("a789", "Phát Lâm Lưu", "luu@gmail.com", "123456", "29/07/2021", 2000000, "Sếp", 189);
 
-dsnv.push(demo1);
-dsnv.push(demo2);
-dsnv.push(demo3);
-dsnv.push(demo4);
-dsnv.push(demo5);
+qlnv.dsnv.push(demo1);
+qlnv.dsnv.push(demo2);
+qlnv.dsnv.push(demo3);
+qlnv.dsnv.push(demo4);
+qlnv.dsnv.push(demo5);
 
-hienthi(dsnv);
+hienthi(qlnv.dsnv);
 
 
 function themNhanVien() {
@@ -74,37 +57,23 @@ function themNhanVien() {
        return
      }
 
-    console.log(nhanVien);
-
-    dsnv.push(nhanVien);
-    localStorage.setItem("dsnv", JSON.stringify(dsnv));
-
-    hienthi(dsnv);
+    qlnv.themNhanVien(nhanVien);
+    hienthi(qlnv.dsnv);
     resetForm();
 }
 
 function xoaNhanVien(txttknv){
-  dsnv = dsnv.filter(function(nv) {
-    return nv.txttknv !== txttknv;
-  
-    });
-  
-    hienthi(dsnv);
+
+  qlnv.xoaNhanVien(txttknv);
+  hienthi(qlnv.dsnv);
 }
 
 function timKiemNhanVien(){
   var search = document.getElementById("searchName").value
 
-  var newDsnv = dsnv.filter(function(nv){
-    var searchValue = search.trim().toLowerCase()
-    var xepLoaiValue = nv.xepLoai().trim().toLowerCase()
-
-
-    return xepLoaiValue.indexOf(searchValue) !== -1
+  var newDsnv = qlnv.timKiemNhanVien(search)
   
-  })
-
-  hienthi(newDsnv)
+  hienthi(newDsnv);
 
 
 }
@@ -137,13 +106,8 @@ function capNhatNhanVien() {
        return
      }
 
-    dsnv = dsnv.map(function (nv) {
-        if (nv.txttknv === txttknv) {
-          return nhanVien;
-        }
-        return nv;
-      });
-      hienthi(dsnv);
+    qlnv.capNhatNhanVien(nhanVien);
+      hienthi(qlnv.dsnv);
       resetForm()
 }
 
@@ -215,10 +179,7 @@ function delegationTable(event){
 
 function chonNhanVien(txttknv){
 
-  var nhanVien = dsnv.find(function(nv){
-    return nv.txttknv === txttknv
-
-  })
+  var nhanVien = qlnv.chonNhanVien(txttknv)
 
   document.getElementById("tknv").disabled = true;
 
