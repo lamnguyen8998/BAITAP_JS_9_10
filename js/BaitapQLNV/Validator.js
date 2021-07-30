@@ -58,13 +58,13 @@ Validator.prototype.quyDinhEmail = function(name, value) {
         return true;
         };
 
-    // Validator.prototype.gioiHanPassWord = function(name, value) {
-    //   if (!/^(?=.*[A-Za-z])(?=.*\d)[a-zA-Z0-9!@#$%^&*()~¥=_+}{":;'?/>.<,`\-\|\[\]]{6,10}$/.test(value)) {
-    //     this.errors[name] = "Mật mã phải từ 6 đến 10 ký tự và phải có ký tự đặc biệt";
-    //     return false;
-    //   }
-    //   return true;
-    //   };
+    Validator.prototype.gioiHanPassWord = function(name, value) {
+      if (!/^(?=.*[A-Za-z])(?=.*\d)[a-zA-Z0-9!@#$%^&*()~¥=_+}{":;'?/>.<,`\-\|\[\]]{6,10}$/.test(value)) {
+        this.errors[name] = "Mật mã phải từ 6 đến 10 ký tự và phải có ký tự đặc biệt";
+        return false;
+      }
+      return true;
+      };
 
     // Validator.prototype.txtpassword = function(name, value) {
     //   if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$/.test(value)) {

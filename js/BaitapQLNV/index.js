@@ -14,11 +14,11 @@ hienthi(qlnv.dsnv);
 
 
 // DEMO TEST
-let demo1 = new NhanVien("a123", "Hồng Loan Thị Lưu", "loan@gmail.com", "123456", "25/07/2021", 1000000, "Sếp", 199);
-let demo2 = new NhanVien("a234", "Vũ Lâm Nguyễn", "nguyen@gmail.com", "123456", "26/07/2021", 130000, "Sếp", 179);
-let demo3 = new NhanVien("a345", "Nguyễn Lưu Phương Anh", "anh@gmail.com", "123456", "27/07/2021", 2000000, "Sếp", 199);
-let demo4 = new NhanVien("a456", "Nguyễn Vũ Minh Phát", "phat@gmail.com", "123456", "28/07/2021", 1900000, "Sếp", 169);
-let demo5 = new NhanVien("a789", "Phát Lâm Lưu", "luu@gmail.com", "123456", "29/07/2021", 2000000, "Sếp", 189);
+let demo1 = new NhanVien("a123", "Hồng Loan Thị Lưu", "loan@gmail.com", "1234567@Aa", "25/07/2021", 1000000, "Sếp", 199);
+let demo2 = new NhanVien("a234", "Vũ Lâm Nguyễn", "nguyen@gmail.com", "1234567@Aa", "26/07/2021", 130000, "Sếp", 179);
+let demo3 = new NhanVien("a345", "Nguyễn Lưu Phương Anh", "anh@gmail.com", "1234567@Aa", "27/07/2021", 2000000, "Sếp", 199);
+let demo4 = new NhanVien("a456", "Nguyễn Vũ Minh Phát", "phat@gmail.com", "1234567@Aa", "28/07/2021", 1900000, "Sếp", 169);
+let demo5 = new NhanVien("a789", "Phát Lâm Lưu", "luu@gmail.com", "1234567@Aa", "29/07/2021", 2000000, "Sếp", 189);
 
 qlnv.dsnv.push(demo1);
 qlnv.dsnv.push(demo2);
@@ -33,7 +33,7 @@ function themNhanVien() {
     var txttknv = document.getElementById("tknv").value;
     var txtname = document.getElementById("name").value;
     var txtemail = document.getElementById("email").value;
-    var txtpassword = +document.getElementById("password").value;
+    var txtpassword = document.getElementById("password").value;
     var txtdatepicker = document.getElementById("datepicker").value;
     var txtluongCB = +document.getElementById("luongCB").value;
     var txtchucvu = document.getElementById("chucvu").value;
@@ -193,7 +193,7 @@ function xacThucDuLieu(nhanVien) {
     var isValid = validator.isRequired("tbTKNV", nhanVien.txttknv) && validator.gioiHanKyTu("tbTKNV", nhanVien.txttknv);
     isValid &= validator.isRequired("tbTen", nhanVien.txtname) && validator.tenNhanVienChu("tbTen", nhanVien.txtname);
     isValid &= validator.isRequired("tbEmail", nhanVien.txtemail) && validator.quyDinhEmail("tbEmail", nhanVien.txtemail);
-    isValid &= validator.isRequired("tbMatKhau", nhanVien.txtpassword);   //&& validator.gioiHanPassWord("tbMatKhau", nhanVien.txtpassword);
+    isValid &= validator.isRequired("tbMatKhau", nhanVien.txtpassword) && validator.gioiHanPassWord("tbMatKhau", nhanVien.txtpassword);
     isValid &= validator.isRequired("tbNgay", nhanVien.txtdatepicker);
     isValid &= validator.isRequired("tbLuongCB", nhanVien.txtluongCB)&& validator.gioiHanLuong("tbLuongCB", nhanVien.txtluongCB);
     isValid &= validator.isRequired("tbChucVu", nhanVien.txtchucvu);
