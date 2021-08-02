@@ -10,9 +10,6 @@ var qlnv =new QuanLyNhanVien();
 qlnv.khoiTao();
 hienthi(qlnv.dsnv);
 
-
-
-
 // DEMO TEST
 let demo1 = new NhanVien("a123", "Hồng Loan Thị Lưu", "loan@gmail.com", "1234567@Aa", "25/07/2021", 1000000, "Sếp", 199);
 let demo2 = new NhanVien("a234", "Vũ Lâm Nguyễn", "nguyen@gmail.com", "1234567@Aa", "26/07/2021", 130000, "Sếp", 179);
@@ -122,7 +119,6 @@ function hienthi(dsnv) {
             <td>${nv.txttknv}</td>
             <td>${nv.txtname}</td>
             <td>${nv.txtemail}</td>
-            <td>${nv.txtpassword}</td>
             <td>${nv.txtdatepicker}</td>
             <td>${nv.txtluongCB}</td>
             <td>${nv.txtchucvu}</td>
@@ -148,6 +144,26 @@ updateForm ({});
 document.getElementById("tknv").disabled = false
 
 }
+function openForm() {
+  DomID('btnThemNV').disabled = false;
+  xoaForm();
+  DomID('tbTKNV').innerHTML = '';
+  DomID('tbTen').innerHTML = '';
+  DomID('tbEmail').innerHTML = '';
+  DomID('tbMatKhau').innerHTML = '';
+  DomID('tbNgay').innerHTML = '';
+  DomID('tbLuongCB').innerHTML = '';
+  DomID('tbChucVu').innerHTML = '';
+  DomID('tbGiolam').innerHTML = '';
+  DomID('tbTKNV').style.borderColor = 'red';
+  DomID('tbTen').style.borderColor = 'red';
+  DomID('tbEmail').style.borderColor = 'red';
+  DomID('tbMatKhau').style.borderColor = 'red';
+  DomID('tbNgay').style.borderColor = 'red';
+  DomID('tbLuongCB').style.borderColor = 'red';
+  DomID('tbChucVu').style.borderColor = 'red';
+  DomID('tbGiolam').style.borderColor = 'red';
+}
 
 function updateForm(nhanVien) {
   document.getElementById("tknv").value = nhanVien.txttknv || "";
@@ -167,6 +183,7 @@ function delegationTable(event){
   var action = event.target.getAttribute("data-action");
 
   if (action === "select"){
+    document.getElementById('btnThem').click();
     chonNhanVien(txttknv);
   }
 
